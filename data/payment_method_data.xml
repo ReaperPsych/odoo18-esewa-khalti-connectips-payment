@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_method_nepal_esewa" model="payment.method">
+        <field name="name">eSewa</field>
+        <field name="code">nepal_esewa</field>
+        <field name="sequence">10</field>
+        <field name="image" type="base64" file="nepal_wallets/static/img/esewa.png"/>
+        <field name="support_tokenization">False</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_refund">none</field>
+    </record>
+
+    <record id="payment_method_nepal_khalti" model="payment.method">
+        <field name="name">Khalti (by IME)</field>
+        <field name="code">nepal_khalti</field>
+        <field name="sequence">20</field>
+        <field name="image" type="base64" file="nepal_wallets/static/img/khalti.png"/>
+        <field name="support_tokenization">False</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_refund">none</field>
+    </record>
+
+    <record id="payment_method_nepal_connectips" model="payment.method">
+        <field name="name">ConnectIPS</field>
+        <field name="code">nepal_connectips</field>
+        <field name="sequence">30</field>
+        <field name="image" type="base64" file="nepal_wallets/static/img/connectips.png"/>
+        <field name="support_tokenization">False</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_refund">none</field>
+    </record>
+
+</odoo>
