@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_provider_nepal_esewa" model="payment.provider">
+        <field name="name">eSewa (Nepal Wallets)</field>
+        <field name="code">nepal_esewa</field>
+        <field name="module_id" ref="base.module_nepal_wallets"/>
+        <field name="state">disabled</field>
+        <field name="is_published">False</field>
+        <field name="image_128" type="base64" file="nepal_wallets/static/img/esewa.png"/>
+        <field name="redirect_form_view_id" ref="redirect_form_esewa"/>
+        <field name="nw_test_mode">uat</field>
+        <field name="nw_esewa_product_code">EPAYTEST</field>
+        <field name="nw_esewa_secret_key">8gBm/:&amp;EnhH.1/q</field>
+        <field name="payment_method_ids"
+               eval="[Command.set([ref('nepal_wallets.payment_method_nepal_esewa')])]"/>
+    </record>
+
+    <record id="payment_provider_nepal_khalti" model="payment.provider">
+        <field name="name">Khalti by IME (Nepal Wallets)</field>
+        <field name="code">nepal_khalti</field>
+        <field name="module_id" ref="base.module_nepal_wallets"/>
+        <field name="state">disabled</field>
+        <field name="is_published">False</field>
+        <field name="image_128" type="base64" file="nepal_wallets/static/img/khalti.png"/>
+        <field name="redirect_form_view_id" ref="redirect_form_khalti"/>
+        <field name="nw_test_mode">uat</field>
+        <field name="payment_method_ids"
+               eval="[Command.set([ref('nepal_wallets.payment_method_nepal_khalti')])]"/>
+    </record>
+
+    <record id="payment_provider_nepal_connectips" model="payment.provider">
+        <field name="name">ConnectIPS (Nepal Wallets)</field>
+        <field name="code">nepal_connectips</field>
+        <field name="module_id" ref="base.module_nepal_wallets"/>
+        <field name="state">disabled</field>
+        <field name="is_published">False</field>
+        <field name="image_128" type="base64" file="nepal_wallets/static/img/connectips.png"/>
+        <field name="redirect_form_view_id" ref="redirect_form_connectips"/>
+        <field name="nw_test_mode">uat</field>
+        <field name="nw_connectips_merchant_id">550</field>
+        <field name="nw_connectips_app_id">MER-550-APP-1</field>
+        <field name="nw_connectips_app_name">Odoo Store</field>
+        <field name="payment_method_ids"
+               eval="[Command.set([ref('nepal_wallets.payment_method_nepal_connectips')])]"/>
+    </record>
+
+</odoo>

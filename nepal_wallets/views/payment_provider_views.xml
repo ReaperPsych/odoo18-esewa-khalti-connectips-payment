@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Nepal Wallets Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="inside">
+
+                <group invisible="code not in ('nepal_esewa', 'nepal_khalti', 'nepal_connectips') or state != 'test'">
+                    <field name="nw_test_mode"
+                           required="code in ('nepal_esewa', 'nepal_khalti', 'nepal_connectips') and state == 'test'"/>
+                </group>
+
+                <group string="eSewa ePay v2 Configuration" invisible="code != 'nepal_esewa'">
+                    <field name="nw_esewa_product_code"
+                           required="code == 'nepal_esewa' and state != 'disabled'"/>
+                    <field name="nw_esewa_secret_key" password="True"
+                           required="code == 'nepal_esewa' and state != 'disabled'"/>
+                </group>
+
+                <group string="Khalti by IME (ePayment v2) Configuration" invisible="code != 'nepal_khalti'">
+                    <field name="nw_khalti_secret_key" password="True"
+                           required="code == 'nepal_khalti' and (state == 'enabled' or (state == 'test' and nw_test_mode == 'uat'))"/>
+                    <field name="nw_khalti_public_key"/>
+                </group>
+
+                <group string="ConnectIPS (NCHL) Configuration" invisible="code != 'nepal_connectips'">
+                    <field name="nw_connectips_merchant_id"
+                           required="code == 'nepal_connectips' and state != 'disabled'"/>
+                    <field name="nw_connectips_app_id"
+                           required="code == 'nepal_connectips' and state != 'disabled'"/>
+                    <field name="nw_connectips_app_name"
+                           required="code == 'nepal_connectips' and state != 'disabled'"/>
+                    <field name="nw_connectips_app_password" password="True"
+                           required="code == 'nepal_connectips' and (state == 'enabled' or (state == 'test' and nw_test_mode == 'uat'))"/>
+                    <field name="nw_connectips_pfx_file" filename="nw_connectips_pfx_filename"/>
+                    <field name="nw_connectips_pfx_filename" invisible="1"/>
+                    <field name="nw_connectips_pfx_password" password="True"/>
+                    <field name="nw_connectips_private_key_pem"
+                           placeholder="-----BEGIN PRIVATE KEY-----&#10;...&#10;-----END PRIVATE KEY-----"/>
+                    <div colspan="2">
+                        <button name="action_nw_test_connectips_key"
+                                type="object"
+                                string="Test ConnectIPS RSA Key"
+                                class="btn-secondary"
+                                icon="fa-key"
+                                groups="base.group_system"/>
+                    </div>
+                </group>
+
+            </group>
+        </field>
+    </record>
+
+</odoo>

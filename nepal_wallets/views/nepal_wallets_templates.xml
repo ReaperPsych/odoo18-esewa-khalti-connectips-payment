@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="redirect_form_esewa">
+        <form t-att-action="api_url" method="post">
+            <input type="hidden" name="amount" t-att-value="amount"/>
+            <input type="hidden" name="tax_amount" t-att-value="tax_amount"/>
+            <input type="hidden" name="total_amount" t-att-value="total_amount"/>
+            <input type="hidden" name="transaction_uuid" t-att-value="transaction_uuid"/>
+            <input type="hidden" name="product_code" t-att-value="product_code"/>
+            <input type="hidden" name="product_service_charge" t-att-value="product_service_charge"/>
+            <input type="hidden" name="product_delivery_charge" t-att-value="product_delivery_charge"/>
+            <input type="hidden" name="success_url" t-att-value="success_url"/>
+            <input type="hidden" name="failure_url" t-att-value="failure_url"/>
+            <input type="hidden" name="signed_field_names" t-att-value="signed_field_names"/>
+            <input type="hidden" name="signature" t-att-value="signature"/>
+        </form>
+    </template>
+
+    <template id="redirect_form_khalti">
+        <form t-att-action="api_url" method="get">
+            <t t-foreach="query_params.items()" t-as="param">
+                <input type="hidden" t-att-name="param[0]" t-att-value="param[1]"/>
+            </t>
+        </form>
+    </template>
+
+    <template id="redirect_form_connectips">
+        <form t-att-action="api_url" method="post">
+            <input type="hidden" name="MERCHANTID" t-att-value="MERCHANTID"/>
+            <input type="hidden" name="APPID" t-att-value="APPID"/>
+            <input type="hidden" name="APPNAME" t-att-value="APPNAME"/>
+            <input type="hidden" name="TXNID" t-att-value="TXNID"/>
+            <input type="hidden" name="TXNDATE" t-att-value="TXNDATE"/>
+            <input type="hidden" name="TXNCRNCY" t-att-value="TXNCRNCY"/>
+            <input type="hidden" name="TXNAMT" t-att-value="TXNAMT"/>
+            <input type="hidden" name="REFERENCEID" t-att-value="REFERENCEID"/>
+            <input type="hidden" name="REMARKS" t-att-value="REMARKS"/>
+            <input type="hidden" name="PARTICULARS" t-att-value="PARTICULARS"/>
+            <input type="hidden" name="TOKEN" t-att-value="TOKEN"/>
+        </form>
+    </template>
+
+    <template id="simulation_gateway_page" name="Nepal Wallets Demo Simulation Gateway">
+        <t t-call="web.layout">
+            <t t-set="title"><t t-esc="wallet_name"/> — Demo Payment Gateway</t>
+            <t t-set="head">
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <style>
+                    * { box-sizing: border-box; margin: 0; padding: 0; }
+                    body {
+                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                        background: #f1f5f9;
+                        color: #0f172a;
+                        min-height: 100vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 24px 16px;
+                    }
+                    .nw-wrap { width: 100%; max-width: 480px; }
+                    .nw-card {
+                        background: #ffffff;
+                        border-radius: 18px;
+                        overflow: hidden;
+                        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.14);
+                        border: 1px solid #e2e8f0;
+                    }
+                    .nw-header {
+                        padding: 28px 24px 24px;
+                        color: #ffffff;
+                        text-align: center;
+                    }
+                    .nw-logo {
+                        width: 68px;
+                        height: 68px;
+                        border-radius: 50%;
+                        background: #ffffff;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 32px;
+                        font-weight: 800;
+                        margin-bottom: 12px;
+                        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+                    }
+                    .nw-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+                    .nw-pill {
+                        display: inline-block;
+                        background: rgba(255, 255, 255, 0.18);
+                        color: #ffffff;
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.4px;
+                        padding: 5px 12px;
+                        border-radius: 999px;
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                    }
+                    .nw-body { padding: 24px; }
+                    .nw-summary {
+                        background: #f8fafc;
+                        border: 1px solid #e2e8f0;
+                        border-radius: 12px;
+                        padding: 16px;
+                        margin-bottom: 16px;
+                    }
+                    .nw-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 6px 0;
+                        font-size: 14px;
+                    }
+                    .nw-label { color: #64748b; }
+                    .nw-val { font-weight: 600; color: #0f172a; text-align: right; }
+                    .nw-ref {
+                        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+                        font-size: 12px;
+                        background: #e2e8f0;
+                        color: #1e293b;
+                        padding: 3px 8px;
+                        border-radius: 6px;
+                    }
+                    .nw-divider {
+                        border: 0;
+                        border-top: 1px dashed #cbd5e1;
+                        margin: 10px 0;
+                    }
+                    .nw-total-label { font-size: 15px; font-weight: 700; color: #0f172a; }
+                    .nw-total-val { font-size: 20px; font-weight: 800; }
+                    .nw-hint {
+                        background: #eff6ff;
+                        border: 1px solid #bfdbfe;
+                        color: #1e40af;
+                        border-radius: 10px;
+                        padding: 10px 14px;
+                        font-size: 12.5px;
+                        margin-bottom: 20px;
+                        line-height: 1.45;
+                    }
+                    .nw-actions { display: flex; flex-direction: column; gap: 10px; }
+                    .nw-actions form { width: 100%; }
+                    .nw-btn {
+                        width: 100%;
+                        padding: 13px 18px;
+                        border-radius: 10px;
+                        font-size: 15px;
+                        font-weight: 700;
+                        cursor: pointer;
+                        border: 1px solid transparent;
+                        transition: transform 0.1s ease, filter 0.15s ease, background 0.15s ease;
+                    }
+                    .nw-btn:hover { filter: brightness(0.95); }
+                    .nw-btn:active { transform: scale(0.99); }
+                    .nw-btn-primary {
+                        color: #ffffff;
+                        box-shadow: 0 6px 14px rgba(15, 23, 42, 0.14);
+                    }
+                    .nw-btn-secondary {
+                        background: #ffffff;
+                        color: #334155;
+                        border-color: #cbd5e1;
+                        font-weight: 600;
+                    }
+                    .nw-btn-secondary:hover { background: #f8fafc; }
+                    .nw-btn-danger-link {
+                        background: transparent;
+                        color: #dc2626;
+                        font-size: 13px;
+                        font-weight: 600;
+                        padding: 8px;
+                    }
+                    .nw-btn-danger-link:hover { text-decoration: underline; }
+                    .nw-footer {
+                        background: #f8fafc;
+                        border-top: 1px solid #e2e8f0;
+                        text-align: center;
+                        padding: 14px 20px;
+                        font-size: 12px;
+                        color: #64748b;
+                    }
+                </style>
+            </t>
+
+            <div class="nw-wrap">
+                <div class="nw-card">
+                    <div class="nw-header" t-att-style="'background: ' + brand_bg + ';'">
+                        <div class="nw-logo" t-att-style="'color: ' + brand_color + ';'">
+                            <t t-esc="brand_letter"/>
+                        </div>
+                        <div class="nw-title"><t t-esc="wallet_name"/></div>
+                        <div class="nw-pill"><t t-esc="wallet_subtitle"/></div>
+                    </div>
+
+                    <div class="nw-body">
+                        <div class="nw-summary">
+                            <div class="nw-row">
+                                <span class="nw-label">Merchant</span>
+                                <span class="nw-val"><t t-esc="company_name"/></span>
+                            </div>
+                            <div class="nw-row">
+                                <span class="nw-label">Gateway Reference</span>
+                                <span class="nw-ref"><t t-esc="txn_ref"/></span>
+                            </div>
+                            <div class="nw-row">
+                                <span class="nw-label">Customer</span>
+                                <span class="nw-val"><t t-esc="partner_name"/></span>
+                            </div>
+                            <hr class="nw-divider"/>
+                            <div class="nw-row">
+                                <span class="nw-total-label">Total Payable</span>
+                                <span class="nw-total-val" t-att-style="'color: ' + brand_color + ';'">
+                                    <t t-esc="amount_display"/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="nw-hint">
+                            <strong>Sandbox Info:</strong> <t t-esc="demo_account_hint"/>
+                        </div>
+
+                        <div class="nw-actions">
+                            <form t-att-action="process_url" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="action" value="complete"/>
+                                <t t-foreach="hidden_fields.items()" t-as="hf">
+                                    <input type="hidden" t-att-name="hf[0]" t-att-value="hf[1]"/>
+                                </t>
+                                <button type="submit"
+                                        class="nw-btn nw-btn-primary"
+                                        t-att-style="'background: ' + brand_color + ';'">
+                                    &#10003; Confirm &amp; Pay <t t-esc="amount_display"/>
+                                </button>
+                            </form>
+
+                            <form t-att-action="process_url" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="action" value="cancel"/>
+                                <t t-foreach="hidden_fields.items()" t-as="hf">
+                                    <input type="hidden" t-att-name="hf[0]" t-att-value="hf[1]"/>
+                                </t>
+                                <button type="submit" class="nw-btn nw-btn-secondary">
+                                    &#10005; Cancel Payment
+                                </button>
+                            </form>
+
+                            <form t-att-action="process_url" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="action" value="fail"/>
+                                <t t-foreach="hidden_fields.items()" t-as="hf">
+                                    <input type="hidden" t-att-name="hf[0]" t-att-value="hf[1]"/>
+                                </t>
+                                <button type="submit" class="nw-btn nw-btn-danger-link">
+                                    Simulate Failed Transaction
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="nw-footer">
+                        &#128274; Nepal Wallets &#8226; Odoo 18 Local Interactive Sandbox
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>
