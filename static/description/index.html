@@ -1,18 +1,116 @@
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan" style="color:#14305c;">Nepal Wallets — Payment Gateway Suite for Odoo 18</h2>
-        <h3 class="oe_slogan">eSewa (ePay v2) &bull; Khalti by IME (KPG-2) &bull; ConnectIPS (NCHL)</h3>
-        <div class="oe_span12">
-            <p class="oe_mt32">
-                Accept Nepalese Rupee (NPR) online payments seamlessly across Odoo eCommerce,
-                Sales Orders, Invoices, and Customer Portal with industry-standard cryptography
-                and mandatory server-to-server transaction verification.
-            </p>
-            <ul>
-                <li><strong>eSewa (ePay v2):</strong> HMAC-SHA256 Base64 request &amp; response signing + Status Check API.</li>
-                <li><strong>Khalti by IME (ePayment v2):</strong> Server-to-server Initiate &amp; Lookup APIs with paisa precision.</li>
-                <li><strong>ConnectIPS (NCHL):</strong> SHA256withRSA signing via <code>.pfx</code> or <code>.pem</code> private key + HTTP Basic Auth <code>validatetxn</code> API.</li>
-            </ul>
+<section class="oe_container" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color: #0f172a;">
+    <div class="oe_row oe_spaced" style="max-width: 1080px; margin: 0 auto; padding: 16px;">
+
+        <!-- Hero Cover Banner -->
+        <div style="text-align: center; margin-bottom: 32px;">
+            <img src="banner.png" alt="Nepal Wallets — Odoo 18 Payment Gateway Suite"
+                 style="width: 100%; max-width: 1040px; border-radius: 14px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);"/>
         </div>
+
+        <!-- Intro Headline -->
+        <div style="text-align: center; margin-bottom: 36px;">
+            <h2 style="font-size: 30px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">
+                Unified Nepal Payment Gateway Suite for Odoo 18
+            </h2>
+            <p style="font-size: 16px; color: #475569; max-width: 780px; margin: 0 auto; line-height: 1.6;">
+                Accept Nepalese Rupee (NPR) online payments across <strong>Odoo eCommerce, Sales Orders, Invoices, and Customer Portal</strong>
+                using <strong>eSewa (ePay v2)</strong>, <strong>Khalti by IME (KPG-2)</strong>, and <strong>ConnectIPS (NCHL)</strong> —
+                engineered with strict cryptography, server-to-server verification, and 46 automated tests.
+            </p>
+        </div>
+
+        <!-- 3 Gateway Feature Cards -->
+        <div class="row" style="margin-bottom: 36px;">
+            <div class="col-md-4 mb-3">
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #60bb46; border-radius: 12px; padding: 20px; height: 100%; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);">
+                    <div style="margin-bottom: 12px;">
+                        <img src="esewa.png" alt="eSewa" style="width: 48px; height: 48px; border-radius: 10px;"/>
+                    </div>
+                    <h4 style="font-weight: 700; color: #0f172a; margin-bottom: 8px;">eSewa (ePay v2)</h4>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.55; margin-bottom: 0;">
+                        Base64 <code>HMAC-SHA256</code> request &amp; callback signature verification using constant-time comparison,
+                        mandatory <code>signed_field_names</code> checks, and server-to-server Status Check API verification.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #5c2d91; border-radius: 12px; padding: 20px; height: 100%; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);">
+                    <div style="margin-bottom: 12px;">
+                        <img src="khalti.png" alt="Khalti by IME" style="width: 48px; height: 48px; border-radius: 10px;"/>
+                    </div>
+                    <h4 style="font-weight: 700; color: #0f172a; margin-bottom: 8px;">Khalti by IME (KPG-2)</h4>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.55; margin-bottom: 0;">
+                        Server-to-server Initiate &amp; Lookup REST APIs (<code>Authorization: Key</code>), exact paisa integer math,
+                        immutable <code>pidx</code> SQL unique binding, and strict redirect host whitelisting.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #165ca8; border-radius: 12px; padding: 20px; height: 100%; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);">
+                    <div style="margin-bottom: 12px;">
+                        <img src="connectips.png" alt="ConnectIPS" style="width: 48px; height: 48px; border-radius: 10px;"/>
+                    </div>
+                    <h4 style="font-weight: 700; color: #0f172a; margin-bottom: 8px;">ConnectIPS (NCHL)</h4>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.55; margin-bottom: 0;">
+                        <code>SHA256withRSA</code> digital signing directly from uploaded <code>.pfx</code> (PKCS#12) or <code>.pem</code> private keys,
+                        built-in key self-test button, and HTTP Basic Auth <code>validatetxn</code> confirmation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Preview Showcase -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; margin-bottom: 36px; text-align: center;">
+            <h3 style="font-weight: 700; color: #0f172a; margin-bottom: 8px;">Seamless Odoo 18 Checkout Experience</h3>
+            <p style="font-size: 14.5px; color: #475569; margin-bottom: 20px;">
+                All three Nepali payment methods appear natively inside Odoo eCommerce Checkout, Portal Invoices, and Payment Links — with built-in Local Simulation and Official UAT Sandbox modes.
+            </p>
+            <img src="preview_checkout.png" alt="Odoo 18 Nepal Wallets Checkout Preview"
+                 style="width: 100%; max-width: 960px; border-radius: 12px; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);"/>
+        </div>
+
+        <!-- Security & Engineering Highlights -->
+        <div style="background: #0f172a; color: #f8fafc; border-radius: 14px; padding: 28px; margin-bottom: 36px;">
+            <h3 style="font-weight: 700; color: #ffffff; margin-bottom: 18px; text-align: center;">
+                Production-Grade Security &amp; Reliability
+            </h3>
+            <div class="row" style="font-size: 14px; line-height: 1.65;">
+                <div class="col-md-6 mb-2">
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li><strong>Safe Default Install:</strong> Providers install Disabled &amp; Unpublished so production sites never expose demo routes.</li>
+                        <li><strong>Replay Protection:</strong> SQL <code>UNIQUE</code> constraints on gateway TXN IDs &amp; immutable Khalti <code>pidx</code>.</li>
+                        <li><strong>Race-Condition Safe:</strong> PostgreSQL <code>FOR UPDATE NOWAIT</code> row locking + per-callback DB savepoints.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li><strong>Exact Financial Precision:</strong> <code>Decimal</code> rounding, strict <code>NPR</code> enforcement, fail-closed S2S checks.</li>
+                        <li><strong>Abandoned-Browser Recovery:</strong> Automatic 15-minute reconciliation cron polls pending UAT/Live payments.</li>
+                        <li><strong>Thoroughly Tested:</strong> 46 automated unit, crypto, white-box, grey-box, black-box &amp; HTTP tests.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Setup Steps -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-bottom: 32px;">
+            <h3 style="font-weight: 700; color: #0f172a; margin-bottom: 14px;">Quick Setup Guide</h3>
+            <ol style="font-size: 14.5px; color: #334155; line-height: 1.75; margin-bottom: 0;">
+                <li>Install <strong>Nepal Wallets</strong> from Apps — all three providers appear automatically under <em>Configuration &rarr; Payment Providers</em>.</li>
+                <li>Activate <strong>NPR</strong> currency (under <em>Invoicing &rarr; Configuration &rarr; Currencies</em>) and set your Company or Website Pricelist to <strong>NPR</strong>.</li>
+                <li>Open each provider, choose <strong>Test Mode</strong> (<em>Local Interactive Simulation</em> or <em>Official Sandbox / UAT</em>) or <strong>Enabled</strong> (Live), enter your credentials, and click <strong>Published</strong>.</li>
+            </ol>
+        </div>
+
+        <!-- Footer / Author -->
+        <div style="text-align: center; padding: 18px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 13.5px;">
+            Built by <strong style="color: #0f172a;">Bibeek Kumar Labh</strong> &bull;
+            <a href="https://bibekklabh.com.np" style="color: #2563eb; text-decoration: none;">bibekklabh.com.np</a> &bull;
+            <a href="https://github.com/ReaperPsych/odoo18-esewa-khalti-connectips-payment" style="color: #2563eb; text-decoration: none;">GitHub Repository</a> &bull;
+            Licensed under <strong>LGPL-3</strong> (Free for personal &amp; commercial use)
+        </div>
+
     </div>
 </section>

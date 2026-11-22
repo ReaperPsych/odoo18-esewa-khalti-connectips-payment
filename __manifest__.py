@@ -29,6 +29,9 @@ All three providers support Production, Official Sandbox/UAT, and Local Interact
         'data/payment_provider_data.xml',
         'data/ir_cron_data.xml',
     ],
+    'images': [
+        'static/description/banner.png',
+    ],
     'post_init_hook': 'post_init_hook',
     'uninstall_hook': 'uninstall_hook',
     'application': True,
